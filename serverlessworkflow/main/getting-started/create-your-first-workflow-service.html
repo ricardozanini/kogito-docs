@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Creating your first Serverless Workflow service :: Kogito Serverless Workflow Guides</title>
-    <meta name="generator" content="Antora 3.0.1">
+    <meta name="generator" content="Antora 3.0.3">
     <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+
 <link rel="stylesheet" href="../../../_/css/search.css">
 <link rel="stylesheet" href="../../../_/css/menu.css">
 <link rel="stylesheet" href="../../../_/css/tabs.css">
@@ -68,6 +70,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="cncf-serverless-workflow-specification-support.html">CNCF Serverless Workflow specification</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="getting-familiar-with-our-tooling.html">Getting familiar with Serverless Workflow tooling</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -84,6 +89,9 @@
     <a class="nav-link" href="../core/working-with-parallelism.html">Parallelism in Serverless Workflow</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../core/configuration-properties.html">Configuration properties in Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../core/custom-functions-support.html">Custom functions for your Serverless Workflow service</a>
   </li>
 </ul>
@@ -93,16 +101,13 @@
     <span class="nav-text">Tooling</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../tooling/serverless-workflow-editor/swf-editor-overview.html">Serverless Workflow editor</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../tooling/serverless-workflow-editor/swf-editor-chrome-extension.html">Chrome GitHub extension for Serverless Workflow editor</a>
   </li>
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../tooling/serverless-workflow-editor/swf-editor-vscode-extension.html">VS Code extension for Serverless Workflow editor</a>
   </li>
-</ul>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tooling/serverless-workflow-editor/swf-editor-chrome-extension.html">Chrome GitHub extension for Serverless Workflow editor</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -129,6 +134,9 @@
     <a class="nav-link" href="../service-orchestration/orchestration-of-openapi-based-services.html">Orchestrating the OpenAPI services</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../service-orchestration/configuring-openapi-services-endpoints.html">Configuring the OpenAPI services endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../service-orchestration/orchestration-of-grpc-services.html">Orchestration of gRPC based services</a>
   </li>
 </ul>
@@ -138,10 +146,16 @@
     <span class="nav-text">Eventing</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../eventing/handling-events-on-workflows.html">Event state in Serverless Workflow</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../eventing/consume-producing-events-with-kafka.html">Consuming and producing events using Apache Kafka</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../eventing/working-with-callbacks.html">Callbacks in Serverless Workflow</a>
+    <a class="nav-link" href="../eventing/consume-produce-events-with-knative-eventing.html">Consuming and producing events on Knative Eventing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../eventing/working-with-callbacks.html">Callback state in Serverless Workflow</a>
   </li>
 </ul>
   </li>
@@ -165,13 +179,22 @@
     <a class="nav-link" href="../testing-and-troubleshooting/mocking-http-cloudevents-with-wiremock.html">Mocking HTTP CloudEvents sink using WireMock</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#testing-and-troubleshooting/mocking-opnapi-services-with-wiremock.adoc">Mocking OpenAPI services using WireMock</a>
+    <a class="nav-link" href="../testing-and-troubleshooting/mocking-openapi-services-with-wiremock.html">Mocking OpenAPI services using WireMock</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../testing-and-troubleshooting/basic-integration-tests-with-restassured.html">Testing your Serverless Workflow application using REST Assured</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../testing-and-troubleshooting/integration-tests-with-postgresql.html">Serverless Workflow integration test using PostgreSQL</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Persistence</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../persistence/persistence-with-postgresql.html">Running a Serverless Workflow service using PostgreSQL</a>
   </li>
 </ul>
   </li>
@@ -222,6 +245,12 @@
         <li class="version is-current is-latest">
           <a href="../index.html">main</a>
         </li>
+        <li class="version">
+          <a href="../../1.25.0.Final/index.html">1.25.0.Final</a>
+        </li>
+        <li class="version">
+          <a href="../../1.24.1.Final/index.html">1.24.1.Final</a>
+        </li>
       </ul>
     </li>
   </ul>
@@ -240,6 +269,14 @@
     <li><a href="create-your-first-workflow-service.html">Creating your first Serverless Workflow service</a></li>
   </ul>
 </nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">main</button>
+  <div class="version-menu">
+    <a class="version is-current" href="create-your-first-workflow-service.html">main</a>
+    <a class="version" href="../../1.25.0.Final/getting-started/create-your-first-workflow-service.html">1.25.0.Final</a>
+    <a class="version" href="../../1.24.1.Final/getting-started/create-your-first-workflow-service.html">1.24.1.Final</a>
+  </div>
+</div>
   <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/getting-started/create-your-first-workflow-service.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
@@ -256,7 +293,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#boostrapping-the-project">Bootstrapping a project</a></p>
+<p><a href="#proc-boostrapping-the-project">Bootstrapping a project</a></p>
 </li>
 <li>
 <p><a href="#creating-workflow">Creating a workflow</a></p>
@@ -298,10 +335,10 @@
 <p>Java 11+ is installed with <code>JAVA_HOME</code> configured appropriately.</p>
 </li>
 <li>
-<p>Maven 3.8.1</p>
+<p>Maven 3.8.6</p>
 </li>
 <li>
-<p><a href="https://quarkus.io/guides/cli-tooling">Quarkus CLI</a> 2.10.2.Final or <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Knative CLI</a> 0.0.0</p>
+<p><a href="https://quarkus.io/guides/cli-tooling">Quarkus CLI</a> 2.11.2.Final or <a href="../tooling/kn-plugin-workflow-overview.html" class="xref page">Knative CLI</a> 0.0.0</p>
 </li>
 <li>
 <p>Visual Studio Code with <a href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Red Hat Java Extension</a>
@@ -310,12 +347,12 @@ and <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-e
 </ul>
 </div>
 <div class="paragraph">
-<p>For more information about the tooling and the required dependencies, see <a href="getting-familiar-with-our-tooling.html" class="xref page">tooling guide</a>.</p>
+<p>For more information about the tooling and the required dependencies, see <a href="getting-familiar-with-our-tooling.html" class="xref page">Tooling in Serverless Workflow</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="boostrapping-the-project"><a class="anchor" href="#boostrapping-the-project"></a>Bootstrapping a project</h2>
+<h2 id="proc-boostrapping-the-project"><a class="anchor" href="#proc-boostrapping-the-project"></a>Bootstrapping a project</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To create your Serverless Workflow service, first you need to bootstrap a project.</p>
@@ -349,7 +386,7 @@ and <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-e
     -x=quarkus-container-image-jib \
     -x=quarkus-resteasy-jackson \
     -x=quarkus-smallrye-openapi \
-    --no-code \
+    --no-code  \
     org.kie.kogito.examples:serverless-workflow-hello-world:1.0</code></pre>
 </div>
 </div>
@@ -383,7 +420,7 @@ and <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-e
 <div class="listingblock">
 <div class="title">Create a project using Maven</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn io.quarkus.platform:quarkus-maven-plugin:2.10.2.Final:create \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn io.quarkus.platform:quarkus-maven-plugin:2.11.2.Final:create \
     -DprojectGroupId=org.kie.kogito.examples \
     -DprojectArtifactId=serverless-workflow-hello-world \
     -Dextensions="kogito-quarkus-serverless-workflow,quarkus-container-image-jib,quarkus-resteasy-jackson,quarkus-smallrye-openapi" \
@@ -637,7 +674,7 @@ unique identifier.</td>
 [INFO] Building serverless-workflow-hello-world 1.0
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO]
-[INFO] --- quarkus-maven-plugin:2.10.2.Final:dev (default-cli) @ serverless-workflow-hello-world ---
+[INFO] --- quarkus-maven-plugin:2.11.2.Final:dev (default-cli) @ serverless-workflow-hello-world ---
 [INFO] Invoking org.apache.maven.plugins:maven-resources-plugin:2.6:resources) @ serverless-workflow-hello-world
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 3 resources
@@ -647,7 +684,7 @@ __  ____  __  _____   ___  __ ____  ______
  -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \
 --\___\_\____/_/ |_/_/|_/_/|_|\____/___/
 2022-05-25 14:38:09,741 INFO  [org.kie.kog.add.qua.mes.com.QuarkusKogitoExtensionInitializer] (Quarkus Main Thread) Registered Kogito CloudEvent extension
-2022-05-25 14:38:09,840 INFO  [io.quarkus] (Quarkus Main Thread) serverless-workflow-hello-world 1.0 on JVM (powered by Quarkus 2.10.2.Final) started in 6.470s. Listening on: http://localhost:8080
+2022-05-25 14:38:09,840 INFO  [io.quarkus] (Quarkus Main Thread) serverless-workflow-hello-world 1.0 on JVM (powered by Quarkus 2.11.2.Final) started in 6.470s. Listening on: http://localhost:8080
 2022-05-25 14:38:09,843 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
 2022-05-25 14:38:09,843 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cache, cdi, jackson-jq, kogito-addon-messaging-extension, kogito-processes, kogito-serverless-workflow, reactive-routes, rest-client, rest-client-jackson, resteasy, resteasy-jackson, smallrye-context-propagation, smallrye-openapi, smallrye-reactive-messaging, smallrye-reactive-messaging-http, swagger-ui, vertx]
 2022-05-25 14:38:12,877 INFO  [org.kie.kog.qua.pro.dev.DataIndexInMemoryContainer] (docker-java-stream--938264210) STDOUT: __  ____  __  _____   ___  __ ____  ______
@@ -760,6 +797,15 @@ __  ____  __  _____   ___  __ ____  ______
 <p><a href="../service-orchestration/orchestration-of-openapi-based-services.html" class="xref page">Orchestration of OpenAPI Based Services</a>.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_found_an_issue"><a class="anchor" href="#_found_an_issue"></a><em><strong>Found an issue?</strong></em></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/kiegroup/kogito-docs/issues/new">here</a>.
+We really appreciate it!</p>
 </div>
 </div>
 </div>
