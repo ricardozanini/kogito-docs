@@ -43,7 +43,7 @@
         <div id="topbar-nav" class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <a class="navbar-item small-item" href="https://github.com/kiegroup"
+                    <a class="navbar-item small-item" href="https://github.com/apache"
                        target="_blank" title="Follow KIE on GitHub">
                         <div class="github-icon"></div>
                     </a>
@@ -164,6 +164,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../service-orchestration/orchestration-of-grpc-services.html">gRPC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../service-orchestration/troubleshooting.html">Troubleshooting</a>
   </li>
 </ul>
   </li>
@@ -305,7 +308,13 @@
     <a class="nav-link" href="../cloud/operator/workflow-status-conditions.html">Custom Resource Status</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cloud/operator/known-issues.html">Known Issues</a>
+    <a class="nav-link" href="../cloud/operator/building-custom-images.html">Building Custom Images</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/operator/known-issues.html">Roadmap and Known Issues</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/operator/customize-podspec.html">Custom Workflow PodSpec</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cloud/operator/migration-guide.html">Migration Guide</a>
@@ -425,9 +434,6 @@
           <a href="../../1.40.0.Final/index.html">1.40</a>
         </li>
         <li class="version">
-          <a href="../../1.40.0-SNAPSHOT/index.html">1.40-RC</a>
-        </li>
-        <li class="version">
           <a href="../../1.39.0.Final/index.html">1.39</a>
         </li>
         <li class="version">
@@ -502,7 +508,6 @@
     <a class="version" href="../../1.42.0.Final/integrations/custom-functions-knative.html">1.42</a>
     <a class="version" href="../../1.41.0.Final/integrations/custom-functions-knative.html">1.41</a>
     <a class="version" href="../../1.40.0.Final/integrations/custom-functions-knative.html">1.40</a>
-    <a class="version" href="../../1.40.0-SNAPSHOT/integrations/custom-functions-knative.html">1.40-RC</a>
     <a class="version" href="../../1.39.0.Final/integrations/custom-functions-knative.html">1.39</a>
     <a class="version" href="../../1.38.0.Final/integrations/custom-functions-knative.html">1.38</a>
     <a class="version" href="../../1.37.0.Final/integrations/custom-functions-knative.html">1.37</a>
@@ -521,7 +526,7 @@
     <a class="version is-missing" href="../../1.24.1.Final/index.html">1.24</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/integrations/custom-functions-knative.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/apache/incubator-kie-kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/integrations/custom-functions-knative.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -532,7 +537,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document describes how to call Knative services using SonataFlow custom functions. The procedure described in this document is based on the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-custom-function-knative"><code>serverless-workflow-custom-function-knative</code></a> example application.</p>
+<p>This document describes how to call Knative services using SonataFlow custom functions. The procedure described in this document is based on the <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-custom-function-knative"><code>serverless-workflow-custom-function-knative</code></a> example application.</p>
 </div>
 <div class="paragraph">
 <p>For more details about the Knative custom function, see <a href="../core/custom-functions-support.html#knative-custom-function" class="xref page">Custom functions for your SonataFlow service</a>.</p>
@@ -563,7 +568,7 @@ For more information see <a href="../testing-and-troubleshooting/kn-plugin-workf
 For more information, see <a href="https://quarkus.io/guides/cli-tooling">Building Quarkus Apps with Quarkus command line interface (CLI)</a>.</p>
 </li>
 <li>
-<p>You have the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-custom-function-knative/custom-function-knative-service">custom-function-knative-service</a> project deployed on Knative. For more information on how to deploy a Quarkus project to Knative, see the <a href="https://quarkus.io/guides/deploying-to-kubernetes">Quarkus Kubernetes extension documentation</a>.</p>
+<p>You have the <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-custom-function-knative/custom-function-knative-service">custom-function-knative-service</a> project deployed on Knative. For more information on how to deploy a Quarkus project to Knative, see the <a href="https://quarkus.io/guides/deploying-to-kubernetes">Quarkus Kubernetes extension documentation</a>.</p>
 </li>
 </ul>
 </div>
@@ -571,7 +576,7 @@ For more information, see <a href="https://quarkus.io/guides/cli-tooling">Buildi
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Add the <code>knative-serving</code> add-on dependency to your <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-custom-function-knative/workflow">workflow</a> project.</p>
+<p>Add the <code>knative-serving</code> add-on dependency to your <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-custom-function-knative/workflow">workflow</a> project.</p>
 <div class="openblock">
 <div class="content">
 <div class="listingblock">
@@ -746,7 +751,7 @@ custom-function-knative-service   http://custom-function-knative-service.default
 <h2 id="_found_an_issue"><a class="anchor" href="#_found_an_issue"></a><em><strong>Found an issue?</strong></em></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/kiegroup/kogito-docs/issues/new">here</a>.
+<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/apache/incubator-kie-kogito-docs/issues/new">here</a>.
 We really appreciate it!</p>
 </div>
 </div>

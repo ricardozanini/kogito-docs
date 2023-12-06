@@ -43,7 +43,7 @@
         <div id="topbar-nav" class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <a class="navbar-item small-item" href="https://github.com/kiegroup"
+                    <a class="navbar-item small-item" href="https://github.com/apache"
                        target="_blank" title="Follow KIE on GitHub">
                         <div class="github-icon"></div>
                     </a>
@@ -164,6 +164,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../service-orchestration/orchestration-of-grpc-services.html">gRPC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../service-orchestration/troubleshooting.html">Troubleshooting</a>
   </li>
 </ul>
   </li>
@@ -305,7 +308,13 @@
     <a class="nav-link" href="../cloud/operator/workflow-status-conditions.html">Custom Resource Status</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cloud/operator/known-issues.html">Known Issues</a>
+    <a class="nav-link" href="../cloud/operator/building-custom-images.html">Building Custom Images</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/operator/known-issues.html">Roadmap and Known Issues</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/operator/customize-podspec.html">Custom Workflow PodSpec</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cloud/operator/migration-guide.html">Migration Guide</a>
@@ -425,9 +434,6 @@
           <a href="../../1.40.0.Final/index.html">1.40</a>
         </li>
         <li class="version">
-          <a href="../../1.40.0-SNAPSHOT/index.html">1.40-RC</a>
-        </li>
-        <li class="version">
           <a href="../../1.39.0.Final/index.html">1.39</a>
         </li>
         <li class="version">
@@ -502,7 +508,6 @@
     <a class="version" href="../../1.42.0.Final/eventing/event-correlation-with-workflows.html">1.42</a>
     <a class="version" href="../../1.41.0.Final/eventing/event-correlation-with-workflows.html">1.41</a>
     <a class="version" href="../../1.40.0.Final/eventing/event-correlation-with-workflows.html">1.40</a>
-    <a class="version" href="../../1.40.0-SNAPSHOT/eventing/event-correlation-with-workflows.html">1.40-RC</a>
     <a class="version" href="../../1.39.0.Final/eventing/event-correlation-with-workflows.html">1.39</a>
     <a class="version" href="../../1.38.0.Final/eventing/event-correlation-with-workflows.html">1.38</a>
     <a class="version" href="../../1.37.0.Final/eventing/event-correlation-with-workflows.html">1.37</a>
@@ -521,7 +526,7 @@
     <a class="version" href="../../1.24.1.Final/eventing/event-correlation-with-workflows.html">1.24</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/eventing/event-correlation-with-workflows.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/apache/incubator-kie-kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/eventing/event-correlation-with-workflows.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -575,7 +580,7 @@
 <h2 id="ref-example-event-correlation"><a class="anchor" href="#ref-example-event-correlation"></a>Example of event correlation in a workflow</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can see the correlation configuration in the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-correlation-quarkus"><code>serverless-workflow-correlation-quarkus</code></a> example application, describing the setup and usage of event correlation in a workflow.</p>
+<p>You can see the correlation configuration in the <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-correlation-quarkus"><code>serverless-workflow-correlation-quarkus</code></a> example application, describing the setup and usage of event correlation in a workflow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -584,7 +589,7 @@
 <div class="title">Figure 2. Event correlation evaluation process</div>
 </div>
 <div class="paragraph">
-<p>The <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-correlation-quarkus/src/main/resources/correlation.sw.json">workflow definition file</a> contains the correlation information, in which the events section is defined as follows:</p>
+<p>The <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-correlation-quarkus/src/main/resources/correlation.sw.json">workflow definition file</a> contains the correlation information, in which the events section is defined as follows:</p>
 </div>
 <div id="ref-correlation-event-definition" class="listingblock">
 <div class="title">Example event correlation in a workflow</div>
@@ -688,7 +693,7 @@
 </table>
 </div>
 <div class="paragraph">
-<p>Using the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-correlation-quarkus/src/main/resources/correlation.sw.json">workflow definition</a> in <code>serverless-workflow-correlation-quarkus</code> example application, you can define other events that are published and consumed by the workflow.</p>
+<p>Using the <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-correlation-quarkus/src/main/resources/correlation.sw.json">workflow definition</a> in <code>serverless-workflow-correlation-quarkus</code> example application, you can define other events that are published and consumed by the workflow.</p>
 </div>
 <div class="paragraph">
 <p>The <code>serverless-workflow-correlation-quarkus</code> example application uses callback states, such as <a href="#ref-validade-user-email-state"><code>Validate User Email</code></a>. This means that once the workflow execution reaches the callback state, the workflow publishes an event of <a href="#ref-correlation-event-definition"><code>validateAccountEmailEvent</code></a> type and waits to receive an event of <a href="#ref-correlation-event-definition"><code>validatedAccountEmailEvent</code></a> type. For more information about the callback state, see <a href="../core/working-with-callbacks.html" class="xref page">Callback state in SonataFlow</a>.</p>
@@ -801,7 +806,7 @@
 <h2 id="_found_an_issue"><a class="anchor" href="#_found_an_issue"></a><em><strong>Found an issue?</strong></em></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/kiegroup/kogito-docs/issues/new">here</a>.
+<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/apache/incubator-kie-kogito-docs/issues/new">here</a>.
 We really appreciate it!</p>
 </div>
 </div>

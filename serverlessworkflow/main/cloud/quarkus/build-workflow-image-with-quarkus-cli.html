@@ -43,7 +43,7 @@
         <div id="topbar-nav" class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <a class="navbar-item small-item" href="https://github.com/kiegroup"
+                    <a class="navbar-item small-item" href="https://github.com/apache"
                        target="_blank" title="Follow KIE on GitHub">
                         <div class="github-icon"></div>
                     </a>
@@ -164,6 +164,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../service-orchestration/orchestration-of-grpc-services.html">gRPC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../service-orchestration/troubleshooting.html">Troubleshooting</a>
   </li>
 </ul>
   </li>
@@ -305,7 +308,13 @@
     <a class="nav-link" href="../operator/workflow-status-conditions.html">Custom Resource Status</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../operator/known-issues.html">Known Issues</a>
+    <a class="nav-link" href="../operator/building-custom-images.html">Building Custom Images</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operator/known-issues.html">Roadmap and Known Issues</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../operator/customize-podspec.html">Custom Workflow PodSpec</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../operator/migration-guide.html">Migration Guide</a>
@@ -425,9 +434,6 @@
           <a href="../../../1.40.0.Final/index.html">1.40</a>
         </li>
         <li class="version">
-          <a href="../../../1.40.0-SNAPSHOT/index.html">1.40-RC</a>
-        </li>
-        <li class="version">
           <a href="../../../1.39.0.Final/index.html">1.39</a>
         </li>
         <li class="version">
@@ -503,7 +509,6 @@
     <a class="version" href="../../../1.42.0.Final/cloud/quarkus/build-workflow-image-with-quarkus-cli.html">1.42</a>
     <a class="version" href="../../../1.41.0.Final/cloud/quarkus/build-workflow-image-with-quarkus-cli.html">1.41</a>
     <a class="version" href="../../../1.40.0.Final/cloud/quarkus/build-workflow-image-with-quarkus-cli.html">1.40</a>
-    <a class="version" href="../../../1.40.0-SNAPSHOT/cloud/quarkus/build-workflow-image-with-quarkus-cli.html">1.40-RC</a>
     <a class="version" href="../../../1.39.0.Final/cloud/quarkus/build-workflow-image-with-quarkus-cli.html">1.39</a>
     <a class="version" href="../../../1.38.0.Final/cloud/quarkus/build-workflow-image-with-quarkus-cli.html">1.38</a>
     <a class="version" href="../../../1.37.0.Final/cloud/quarkus/build-workflow-image-with-quarkus-cli.html">1.37</a>
@@ -522,7 +527,7 @@
     <a class="version is-missing" href="../../../1.24.1.Final/index.html">1.24</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/cloud/quarkus/build-workflow-image-with-quarkus-cli.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/apache/incubator-kie-kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/cloud/quarkus/build-workflow-image-with-quarkus-cli.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -564,7 +569,7 @@
 <h2 id="proc-using-example-application"><a class="anchor" href="#proc-using-example-application"></a>Using an example application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To get started with building workflow images, you can use the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
+<p>To get started with building workflow images, you can use the <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -582,11 +587,11 @@ You can skip the following procedure if you already have a workflow application.
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p>Clone the <a href="https://github.com/kiegroup/kogito-examples.git">kogito-examples</a> repository and navigate to the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
+<p>Clone the <a href="https://github.com/apache/incubator-kie-kogito-examples.git">kogito-examples</a> repository and navigate to the <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-greeting-quarkus"><code>serverless-workflow-greeting-quarkus</code></a> example application.</p>
 <div class="listingblock">
 <div class="title">Clone an example application</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone --branch main https://github.com/kiegroup/kogito-examples.git
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">git clone --branch main https://github.com/apache/incubator-kie-kogito-examples.git
 cd kogito-examples/serverless-workflow-examples/serverless-workflow-greeting-quarkus</code></pre>
 </div>
 </div>
@@ -993,7 +998,7 @@ INFO  [io.quarkus] (main) serverless-workflow-greeting-quarkus 1.22.1.Final nati
 <h2 id="_found_an_issue"><a class="anchor" href="#_found_an_issue"></a><em><strong>Found an issue?</strong></em></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/kiegroup/kogito-docs/issues/new">here</a>.
+<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/apache/incubator-kie-kogito-docs/issues/new">here</a>.
 We really appreciate it!</p>
 </div>
 </div>

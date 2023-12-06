@@ -43,7 +43,7 @@
         <div id="topbar-nav" class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <a class="navbar-item small-item" href="https://github.com/kiegroup"
+                    <a class="navbar-item small-item" href="https://github.com/apache"
                        target="_blank" title="Follow KIE on GitHub">
                         <div class="github-icon"></div>
                     </a>
@@ -164,6 +164,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../service-orchestration/orchestration-of-grpc-services.html">gRPC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../service-orchestration/troubleshooting.html">Troubleshooting</a>
   </li>
 </ul>
   </li>
@@ -305,7 +308,13 @@
     <a class="nav-link" href="../cloud/operator/workflow-status-conditions.html">Custom Resource Status</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../cloud/operator/known-issues.html">Known Issues</a>
+    <a class="nav-link" href="../cloud/operator/building-custom-images.html">Building Custom Images</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/operator/known-issues.html">Roadmap and Known Issues</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../cloud/operator/customize-podspec.html">Custom Workflow PodSpec</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../cloud/operator/migration-guide.html">Migration Guide</a>
@@ -425,9 +434,6 @@
           <a href="../../1.40.0.Final/index.html">1.40</a>
         </li>
         <li class="version">
-          <a href="../../1.40.0-SNAPSHOT/index.html">1.40-RC</a>
-        </li>
-        <li class="version">
           <a href="../../1.39.0.Final/index.html">1.39</a>
         </li>
         <li class="version">
@@ -503,7 +509,6 @@
     <a class="version" href="../../1.42.0.Final/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.42</a>
     <a class="version" href="../../1.41.0.Final/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.41</a>
     <a class="version" href="../../1.40.0.Final/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.40</a>
-    <a class="version" href="../../1.40.0-SNAPSHOT/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.40-RC</a>
     <a class="version" href="../../1.39.0.Final/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.39</a>
     <a class="version" href="../../1.38.0.Final/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.38</a>
     <a class="version" href="../../1.37.0.Final/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.37</a>
@@ -522,7 +527,7 @@
     <a class="version" href="../../1.24.1.Final/testing-and-troubleshooting/basic-integration-tests-with-restassured.html">1.24</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/kiegroup/kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/testing-and-troubleshooting/basic-integration-tests-with-restassured.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/apache/incubator-kie-kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/testing-and-troubleshooting/basic-integration-tests-with-restassured.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -539,7 +544,7 @@
 <p>REST Assured enables you to test REST APIs using Java libraries and integrates with Apache Maven. For more information about REST Assured, see <a href="https://rest-assured.io/">REST Assured page</a>.</p>
 </div>
 <div class="paragraph">
-<p>The testing procedure in this document is based on the <code>serverless-workflow-examples/serverless-workflow-testing-with-rest-assured</code> example application. You can access this example application in <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-testing-with-rest-assured">Kogito Examples</a> GitHub repository.</p>
+<p>The testing procedure in this document is based on the <code>serverless-workflow-examples/serverless-workflow-testing-with-rest-assured</code> example application. You can access this example application in <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples/serverless-workflow-testing-with-rest-assured">Kogito Examples</a> GitHub repository.</p>
 </div>
 <div class="paragraph">
 <p>The following procedure describes how to test a workflow application that exposes the <code>hello</code> endpoint, which expects a <code>name</code> as a request parameter and returns <code>greeting</code> value:</p>
@@ -582,7 +587,7 @@
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This document is based on the <code>serverless-workflow-testing-with-rest-assured</code> example application from the <a href="https://github.com/kiegroup/kogito-examples/tree/main/serverless-workflow-examples">GitHub repository</a>.</p>
+<p>This document is based on the <code>serverless-workflow-testing-with-rest-assured</code> example application from the <a href="https://github.com/apache/incubator-kie-kogito-examples/tree/main/serverless-workflow-examples">GitHub repository</a>.</p>
 </div>
 </td>
 </tr>
@@ -716,7 +721,7 @@ class HelloTest {
 [INFO]
 [INFO]
 [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ serverless-workflow-testing-with-rest-assured ---
-[INFO] Building jar: /home/user/dev/kiegroup/kogito-examples/serverless-workflow-examples/serverless-workflow-testing-with-rest-assured/target/serverless-workflow-testing-with-rest-assured-1.0.jar
+[INFO] Building jar: /home/user/dev/apache/kogito-examples/serverless-workflow-examples/serverless-workflow-testing-with-rest-assured/target/serverless-workflow-testing-with-rest-assured-1.0.jar
 [INFO]
 [INFO] --- quarkus-maven-plugin:2.9.2.Final:build (default) @ serverless-workflow-testing-with-rest-assured ---
 [INFO] Performed addonsConfig discovery, found: AddonsConfig{usePersistence=false, useTracing=false, useMonitoring=false, usePrometheusMonitoring=false, useCloudEvents=true, useExplainability=false, useProcessSVG=false, useEventDrivenDecisions=false, useEventDrivenRules=false}
@@ -768,7 +773,7 @@ class HelloTest {
 <h2 id="_found_an_issue"><a class="anchor" href="#_found_an_issue"></a><em><strong>Found an issue?</strong></em></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/kiegroup/kogito-docs/issues/new">here</a>.
+<p>If you find an issue or any misleading information, please feel free to report it <a href="https://github.com/apache/incubator-kie-kogito-docs/issues/new">here</a>.
 We really appreciate it!</p>
 </div>
 </div>
