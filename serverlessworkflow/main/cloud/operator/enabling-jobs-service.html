@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Configuring Workflow Services :: SonataFlow Guides</title>
-    <meta name="description" content="Configuration of Workflow Services deployed by the operator">
-    <meta name="keywords" content="kogito, sonataflow, workflow, serverless, operator, kubernetes, minikube, config, openshift, containers">
+    <title>Managing Jobs Service with the Operator :: SonataFlow Guides</title>
+    <meta name="description" content="Configure Jobs Service using the `SonataFlowPlatform` CR.">
+    <meta name="keywords" content="sonataflow, serverless, operator, kubernetes, jobs service">
     <meta name="generator" content="Antora 3.1.4">
     <link rel="stylesheet" href="../../../../_/css/site.css">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
@@ -256,7 +256,7 @@
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="referencing-resource-files.html">Referencing Workflow Resources</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="3">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="configuring-workflows.html">Configuration</a>
   </li>
   <li class="nav-item" data-depth="3">
@@ -606,24 +606,22 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">SonataFlow Guides</a></li>
-    <li><a href="../index.html">Cloud</a></li>
-    <li>Operator</li>
-    <li><a href="configuring-workflows.html">Configuration</a></li>
+    <li><a href="enabling-jobs-service.html">Managing Jobs Service with the Operator</a></li>
   </ul>
 </nav>
 <div class="page-versions">
   <button class="version-menu-toggle" title="Show other versions of page">snapshot</button>
   <div class="version-menu">
-    <a class="version is-current" href="configuring-workflows.html">snapshot</a>
-    <a class="version" href="../../../1.45.0-SNAPSHOT/cloud/operator/configuring-workflows.html">1.45-RC</a>
-    <a class="version" href="../../../1.44.0-SNAPSHOT/cloud/operator/configuring-workflows.html">1.44-RC</a>
-    <a class="version" href="../../../latest/cloud/operator/configuring-workflows.html">1.43</a>
-    <a class="version" href="../../../1.42.0.Final/cloud/operator/configuring-workflows.html">1.42</a>
-    <a class="version" href="../../../1.41.0.Final/cloud/operator/configuring-workflows.html">1.41</a>
-    <a class="version" href="../../../1.40.0.Final/cloud/operator/configuring-workflows.html">1.40</a>
-    <a class="version" href="../../../1.39.0.Final/cloud/operator/configuring-workflows.html">1.39</a>
-    <a class="version" href="../../../1.38.0.Final/cloud/operator/configuring-workflows.html">1.38</a>
-    <a class="version" href="../../../1.37.0.Final/cloud/operator/configuring-workflows.html">1.37</a>
+    <a class="version is-current" href="enabling-jobs-service.html">snapshot</a>
+    <a class="version is-missing" href="../../../1.45.0-SNAPSHOT/index.html">1.45-RC</a>
+    <a class="version is-missing" href="../../../1.44.0-SNAPSHOT/index.html">1.44-RC</a>
+    <a class="version is-missing" href="../../../latest/index.html">1.43</a>
+    <a class="version is-missing" href="../../../1.42.0.Final/index.html">1.42</a>
+    <a class="version is-missing" href="../../../1.41.0.Final/index.html">1.41</a>
+    <a class="version is-missing" href="../../../1.40.0.Final/index.html">1.40</a>
+    <a class="version is-missing" href="../../../1.39.0.Final/index.html">1.39</a>
+    <a class="version is-missing" href="../../../1.38.0.Final/index.html">1.38</a>
+    <a class="version is-missing" href="../../../1.37.0.Final/index.html">1.37</a>
     <a class="version is-missing" href="../../../1.36.1.Final/index.html">1.36</a>
     <a class="version is-missing" href="../../../1.35.0.Final/index.html">1.35</a>
     <a class="version is-missing" href="../../../1.34.0.Final/index.html">1.34</a>
@@ -639,145 +637,220 @@
     <a class="version is-missing" href="../../../1.24.1.Final/index.html">1.24</a>
   </div>
 </div>
-  <div class="edit-this-page"><a href="https://github.com/apache/incubator-kie-kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/cloud/operator/configuring-workflows.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/apache/incubator-kie-kogito-docs/edit/main/serverlessworkflow/modules/ROOT/pages/cloud/operator/enabling-jobs-service.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Configuring Workflow Services</h1>
+<h1 class="page">Managing Jobs Service with the Operator</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This document describes how to configure a Workflow service with the SonataFlow Operator.</p>
+<p>This document describes how to configure the Jobs Service instance using the SonataFlowPlarform CR.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_editing_the_workflow_configuration"><a class="anchor" href="#_editing_the_workflow_configuration"></a>Editing the Workflow Configuration</h2>
+<h2 id="_automate_the_jobs_service_instance_management_with_the_sonataflow_operator"><a class="anchor" href="#_automate_the_jobs_service_instance_management_with_the_sonataflow_operator"></a>Automate the Jobs Service instance management with the <code>SonataFlow</code> Operator</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When the operator deploys the Workflow service, it also creates two `ConfigMap`s to store the runtime properties:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The user properties are defined in a <code>ConfigMap</code> named after the <code>SonataFlow</code> object with the suffix <code>-props</code>. For example, if your Workflow name is <code>greeting</code>, then the <code>ConfigMap</code> name is <code>greeting-props</code>.</p>
-</li>
-<li>
-<p>The <a href="#managed-props">Managed Properties</a> are defined in a <code>ConfigMap</code> named after the <code>SonataFlow</code> object with the suffix <code>-managed-props</code>. For example, if your Workflow name is <code>greeting</code>, then the <code>ConfigMap</code> name is <code>greeting-managed-props</code>.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Managed properties always override any user property using the same key name and cannot be edited by the user. Any change would be overwritten by the operator at the next reconciliation cycle.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>It is possible to deploy the Jobs Service manually, leveraging the Operator offers a more seamless integration by
+combining it with namespace configuration through the SonataFlowPlatform Custom Resource (CR). When the Operator oversees
+the lifecycle of the jobs service, it automatically injects necessary properties during creation into the SonataFlow workflows.
+This integration eliminates the need for including these properties within the SonataFlow workflow CR instance, simplifying workflow management.
+== Configuring Jobs Service in the SonataFlowPlatform CR</p>
 </div>
 <div class="paragraph">
-<p>You can use the Kubernetes object editor of your preference to add or edit the <a href="https://en.wikipedia.org/wiki/.properties">properties</a> in the Workflow configuration. Using <code>kubectl</code> you can do:</p>
+<p>To enable the deployment of a Jobs Service instance, the <code>SonataFlowPlatform</code> CRD exposes a set of fields that allow the user to
+configure the running instance.</p>
+</div>
+<div class="sect2">
+<h3 id="_ephemeral_persistence"><a class="anchor" href="#_ephemeral_persistence"></a>Ephemeral persistence</h3>
+<div class="paragraph">
+<p>The basic runtime is to deploy the Jobs Service with an ephemeral backend running in the same container
+as the Jobs Service runtime.</p>
 </div>
 <div class="listingblock">
-<div class="title">Editing the Workflow Properties</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">kubectl edit cm &lt;workflow-name&gt;-props</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that it&#8217;s important to respect the properties format, otherwise the operator will replace your configuration with the default one.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s an example of a Workflow properties stored within a ConfigMap:</p>
-</div>
-<div class="listingblock">
-<div class="title">Example of a Workflow ConfigMap Properties</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
-kind: ConfigMap
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+apiVersion: sonataflow.org/v1alpha08
+kind: SonataFlowPlatform
 metadata:
-  labels:
-    app: greeting
-  name: greeting-props
-  namespace: default
-data:
-  application.properties: |
-    my.properties.key = any-value</code></pre>
+  name: sonataflow-platform
+spec:
+  services:
+    jobService: {}
+---</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The underlying runtime engine that executes the Workflow service is based on <a href="https://quarkus.io/">Quarkus</a>. The <code>application.properties</code> key in the ConfigMap means that you can configure the Workflow as you would any <a href="https://quarkus.io/guides/config">Quarkus application</a>.</p>
+<p>When executing this manifest, the operator will reconcile generating a pod hosting the Jobs Service:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">---
+$&gt;kubectl get pod -n sonataflow
+NAME                                               READY   STATUS    RESTARTS   AGE
+sonataflow-platform-jobs-service-cdf85d969-sbwkj   1/1     Running   0          108s
+---</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Any <a href="../../core/configuration-properties.html" class="xref page">SonataFlow configuration that the documentation describes</a> or general Quarkus application property can be configured using this method.</p>
+<p>Keep in mind that this setup is not recommended for production environments, especially because the data does not persist when the pod restarts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_an_existing_postgresql_service"><a class="anchor" href="#_using_an_existing_postgresql_service"></a>Using an existing PostgreSQL service</h3>
+<div class="paragraph">
+<p>For robust environments it is recommened to use an dedicated database service and configure Jobs Service to make use of it. Currently, the Jobs Service
+only supports PostgreSQL database.</p>
+</div>
+<div class="paragraph">
+<p>Configuring Jobs Service to communicate with an existing PostgreSQL instance is supported in two ways. In both cases it requires providing the persistence
+configuration, one by using the Jobs Service&#8217;s persistence field and the other one using the persistence field defined in the <code>SonataFlowPlatform</code> CR
+deployed in the same namespace.</p>
+</div>
+<div class="paragraph">
+<p>By default, the persistence specification defined in the <code>SonataFlow</code> workflow&#8217;s CR takes priority over the one in the <code>SonataFlowPlatform</code> persistence specification.</p>
+</div>
+<div class="sect3">
+<h4 id="_using_the_persistence_field_defined_in_the_sonataflowplatform_cr"><a class="anchor" href="#_using_the_persistence_field_defined_in_the_sonataflowplatform_cr"></a>Using the persistence field defined in the <code>SonataFlowPlatform</code> CR</h4>
+<div class="paragraph">
+<p>Using the persistence configuration in the <code>SonataFlowPlatform</code> CR located in the same namespace requires to have the <code>SonataFlow</code> CR persistence field configured
+to have an empty <code>{}</code> value, signaling the Operator to derive the persistence from the active <code>SonataFlowPlatform</code>, when available. If no persistence is defined
+the operator will fallback to the ephemeral persistence previously described.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+apiVersion: sonataflow.org/v1alpha08
+kind: SonataFlowPlatform
+metadata:
+  name: sonataflow-platform
+spec:
+  persistence:
+    postgresql:
+      secretRef:
+        name: postgres-secrets
+        userKey: POSTGRES_USER
+        passwordKey: POSTGRES_PASSWORD
+      serviceRef:
+        name: postgres
+        port: 5432
+        databaseName: sonataflow
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And the <code>SonataFlow</code> CR looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+apiVersion: sonataflow.org/v1alpha08
+kind: SonataFlow
+metadata:
+  name: callbackstatetimeouts
+  annotations:
+    sonataflow.org/description: Callback State Timeouts Example k8s
+    sonataflow.org/version: 0.0.1
+spec:
+  persistence: {}
+...
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When using the <code>jdbcUrl</code> field instead of <code>serviceRef</code>, the user is responsible for providing the correct JDBC URL connection value that does not contain a <code>database schema</code>
+because the operator will use verbatim the contents of this field as the JDBC connection in the Jobs Service pod, and if it provides a schema that has been used or formatted
+by a different client, the pod will fail to run.</p>
+</div>
+<div class="sect4">
+<h5 id="_using_the_persistence_field_inside_the_service_specification"><a class="anchor" href="#_using_the_persistence_field_inside_the_service_specification"></a>Using the persistence field inside the service specification</h5>
+<div class="paragraph">
+<p>You can specify define the persistence configuration directly in the Jobs Service specification. The structure is the same as in the <code>SonataFlowPlatform</code> CR and also
+consist on the credentials to access the PostgreSQL instance, and the kubernetes service reference to generate the connectivity.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+apiVersion: sonataflow.org/v1alpha08
+kind: SonataFlowPlatform
+metadata:
+  name: callbackstatetimeouts
+spec:
+  persistence:
+    postgresql:
+      secretRef:
+        name: postgres-secrets
+        userKey: POSTGRES_USER
+        passwordKey: POSTGRES_PASSWORD
+      serviceRef:
+        name: postgres
+        port: 5432
+        databaseName: sonataflow
+        databaseSchema: jobs-service
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example we&#8217;re using a PostgreSQL service located in the same namespace where the Jobs Service is deployed, pointing to the default PostgreSQL port of 5432
+and referencing the database <code>sonataflow</code> and schema <code>jobs-service</code>. By default, when the Jobs Service pod starts it will recreate the schema in the given location
+if it doesn&#8217;t exist.</p>
+</div>
+<div class="paragraph">
+<p>The values of <code>POSTGRES_USER</code> and <code>POSTGRES_PASSWORD</code> point to the keys in the secret that contains the PostgreSQL credentials.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">---
+$&gt;kubectl describe secrets postgres-secrets
+Name:         postgres-secrets
+Namespace:    default
+Labels:       &lt;none&gt;
+Annotations:  &lt;none&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Type:  Opaque</p>
+</div>
+<div class="paragraph">
+<p>Data
+\\\\====
+PGDATA:             28 bytes
+POSTGRES_DATABASE:  10 bytes
+POSTGRES_PASSWORD:  10 bytes
+POSTGRES_USER:      10 bytes
+---</p>
+</div>
+<div class="paragraph">
+<p>Putting everything together will render an output similar to this one below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">---
+$&gt;kubectl get pod -w -n sonataflow
+NAME                                                READY   STATUS    RESTARTS   AGE
+postgres-64c9ddb6bc-v96qb                           1/1     Running   0          14m
+sonataflow-platform-jobs-service-79bb6bc67f-gvcg4   1/1     Running   0           1m
+---</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="managed-props"><a class="anchor" href="#managed-props"></a>Managed properties</h2>
+<h2 id="_conclusion"><a class="anchor" href="#_conclusion"></a>Conclusion</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A few properties cannot be changed in this configuration and they are defined in the managed properties file. The table below lists them.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. List of managed properties</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property Key</th>
-<th class="tableblock halign-left valign-top">Immutable Value</th>
-<th class="tableblock halign-left valign-top">Profile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.http.port</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8080</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarkus.http.host</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0.0.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.kie.kogito.addons.knative.eventing.health-enabled</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dev</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Other managed properties include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The <a href="../../use-cases/advanced-developer-use-cases/service-discovery/kubernetes-service-discovery.html" class="xref page">Kubernetes service discovery</a> properties</p>
-</li>
-<li>
-<p>The <a href="../../use-cases/advanced-developer-use-cases/data-index/data-index-quarkus-extension.html" class="xref page">Data Index location properties</a></p>
-</li>
-<li>
-<p>The <a href="../../use-cases/advanced-developer-use-cases/job-service/quarkus-extensions.html" class="xref page">Job Service location properties</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>If you try to change any of them, the operator will override them with the default, but preserving your changes in other property keys.</p>
+<p>The Operator extends its scope to manage the lifecycle of the Jobs Service instance, thus removing the burden on the users and allowing them to focus on the
+implementation of the <code>Sonataworkflows. It takes care of managing the Jobs Service deployment, dynamically configures its application properties
+when the Data Index service is also available and managed by the Operator, and finally inject application properties in `SonataFlow</code> workflows in the target
+namespace when the Jobs Service is available.</p>
 </div>
 </div>
 </div>
@@ -787,19 +860,7 @@ data:
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://quarkus.io/guides/config-reference#profile-aware-files">Quarkus - Profile aware files</a></p>
-</li>
-<li>
-<p><a href="../../core/configuration-properties.html" class="xref page">Configuration properties in SonataFlow</a></p>
-</li>
-<li>
-<p><a href="known-issues.html" class="xref page">SonataFlow Operator Known Issues, Limitations and Roadmap</a></p>
-</li>
-<li>
-<p><a href="developing-workflows.html" class="xref page">Developing Workflows with the Operator</a></p>
-</li>
-<li>
-<p><a href="build-and-deploy-workflows.html" class="xref page">Building and Deploying Workflows with the Operator</a></p>
+<p><a href="install-serverless-operator.html" class="xref page">Install the SonataFlow Operator</a></p>
 </li>
 </ul>
 </div>
